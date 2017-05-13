@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>DalaFarm Bill System</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -14,20 +15,19 @@
 </head>
 <body>
 <header class="text-center">
-    <!-- <img class="img-responsive" width="120" height="120" src="https://github.com/LeeU1911/OrderIt/raw/master/Designs/icon/nsr-app_icon.png"/> -->
-
-    <!-- <img src="./images/logo.png"/ style="width: 100px; height: 100px; top: 50px" style="margin-top: 50px;> -->
-
-
     <h1 style="margin-top: 50px;">
         DalaFarm Bill System
     </h1>
 
 </header>
 <section class="container">
-
+    <div class="row">
+        <button id="loginBtn" name="loginBtn" class="btn btn-success">Log in</button>
+        <label class="col-md-4 control-label" id="greet"></label>
+    </div>
     <div class="row">
         <div class="col-md-12">
+
             <form class="form-horizontal" name="bill" id="bill">
                 <fieldset>
 
@@ -170,7 +170,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select id="carrot" name="carrot" class="form-control">
+                                    <select style="display: none;" id="carrot" name="carrot" class="form-control">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -189,7 +189,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select id="heartleaf" name="heartleaf" class="form-control">
+                                    <select style="display: none;" id="heartleaf" name="heartleaf" class="form-control">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -208,7 +208,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select id="pennywort" name="pennywort" class="form-control">
+                                    <select style="display: none;" id="pennywort" name="pennywort" class="form-control">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -227,7 +227,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select id="matcha" name="matcha" class="form-control">
+                                    <select style="display: none;" id="matcha" name="matcha" class="form-control">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -246,7 +246,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select id="cocoa" name="cocoa" class="form-control">
+                                    <select style="display: none;" id="cocoa" name="cocoa" class="form-control">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -265,7 +265,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select id="beetroot" name="beetroot" class="form-control">
+                                    <select style="display: none;" id="beetroot" name="beetroot" class="form-control">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -284,7 +284,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select id="broccoli" name="broccoli" class="form-control">
+                                    <select style="display: none;" id="broccoli" name="broccoli" class="form-control">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -303,7 +303,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select id="rainbow" name="rainbow" class="form-control">
+                                    <select style="display: none;" id="rainbow" name="rainbow" class="form-control">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -316,23 +316,27 @@
                         </div>
                     </div>
 
-
+                    <!--Alert-->
+                    <div class="alert alert-success alert-dismissable">
+                        <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+                        <strong>Success!</strong> Lưu thành công!
+                    </div>
                     <!-- Button (Double) -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="save"></label>
                         <div class="col-md-8">
-                            <button id="genMess" name="genMess" class="btn btn-default">Xuất tin nhắn</button>
+                            <button id="genMess" name="genMess" class="btn btn-primary">Xuất tin nhắn</button>
                             <button id="save" name="save" class="btn btn-success">Hoàn tất</button>
                             <button id="cancel" name="cancel" class="btn btn-danger">Xóa làm lại</button>
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <textarea class="form-control" rows="10" id="bill-content"></textarea>
+                    </div>
+
                 </fieldset>
             </form>
-
-            <div class="form-group">
-                <textarea class="form-control" rows="10" id="bill-content"></textarea>
-            </div>
 
         </div>
     </div>
@@ -340,83 +344,151 @@
 </section>
 <!--[if !IE]>
 <script>fixScale(document);</script><![endif]-->
-<script type="text/javascript">
-    $('#bill-submit').on('click',function (e) {
-        e.preventDefault();
-        var billContent = $('#bill-content').val();
-        var dataUrl = "https://kv6ofdn6bl.execute-api.ap-southeast-1.amazonaws.com/dev/bill";
-        console.log("Submitting bill");
-        $.post(dataUrl, JSON.stringify({"billContent": billContent}), function(response){
-            console.log("Bill submitted successfully!");
-        }, "json").fail(function() {
-            console.log( "Error submitting bill" );
-        })
-    });
-
-    $('#cancel').on('click', function(e){
-        e.preventDefault();
-        $('#bill')[0].reset();
-    });
-
-    $('#genMess').on('click', function (e) {
-        e.preventDefault();
-        $('#bill-content').val(humanize($("#bill").serializeArray()));
-    })
-    $('#save').on('click', function (e) {
-        e.preventDefault();
-        console.log($("#bill").serializeArray());
-    })
-
-    $('.checkbox').on('click', function(e){
-        if($(this).find(':checkbox').is(":checked")) {
-            $(this).next('.form-group').find('select').val(1);
-        } else {
-            $(this).next('.form-group').find('select').val(0);
-        }
-    });
-
-    function humanize(input) {
-        var output = "Tổng đơn hàng của " + translate(input[0].value) + " " + input[1].value;
-        for(var i = 2; i < input.length; i++){
-            if(input[i].value && input[i].value != 0) {
-                var key = (translate(input[i].name) === "" || translate(input[i].name) === "\n"?translate(input[i].name): (translate(input[i].name) + ":"));
-                output += ( key + " " + translate(input[i].value));
-            }
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<script>
+    $(function() {
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyABGxfllsBj-8tfsAH7t1qqcZvxZHRP25M",
+            authDomain: "dalafarm-bill.firebaseapp.com",
+            databaseURL: "https://dalafarm-bill.firebaseio.com",
+            projectId: "dalafarm-bill",
+            storageBucket: "dalafarm-bill.appspot.com",
+            messagingSenderId: "723108104918"
         };
-//        output += "\nXin cám ơn " + translate(input[0].value) + " " + input[1].value + " đã ủng hộ DalaFarm ạ."
-        return output;
-    }
-
-    function translate(keyword) {
-        if(keyword) {
-            switch (keyword){
-                case "Male": return "anh";
-                case "Female": return "chị";
-                case "phone": return "\nĐiện thoại";
-                case "phone2": return "\nĐiện thoại 2";
-                case "address": return "\nĐịa chỉ";
-                case "province": return "\nTỉnh thành";
-                case "products": return "\n";
-                case "carrot": return "";
-                case "heartleaf": return "";
-                case "pennywort": return "";
-                case "matcha": return "";
-                case "cocoa": return "";
-                case "beetroot": return "";
-                case "broccoli": return "";
-                case "rainbow": return "";
-                case "1": return ": 1 gói"
-                case "2": return ": 2 gói"
-                case "3": return ": 3 gói"
-                case "4": return ": 4 gói"
-                case "5": return ": 5 gói"
-                case "6": return ": 6 gói"
-                default: return keyword;
-            }
-
-
+        firebase.initializeApp(config);
+        $('#bill').hide();
+//        showAutoCloseAlert();
+        $('.alert-success').hide();
+        function showAutoCloseAlert() {
+            $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+                $(".alert-success").slideUp(500);
+            });
         }
-    }
+
+        $('#cancel').on('click', function(e){
+            e.preventDefault();
+            $('#bill')[0].reset();
+        });
+
+        $('#genMess').on('click', function (e) {
+            e.preventDefault();
+            $('#bill-content').val(humanize($("#bill").serializeArray()));
+        });
+        var user = undefined;
+
+        $('#loginBtn').on('click', function (e) {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider).then(function(result) {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                var token = result.credential.accessToken;
+                // The signed-in user info.
+                user = result.user;
+                $('#greet').html("Xin chào " + user.displayName);
+                $('#loginBtn').hide();
+                $('#bill').show();
+            }).catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                console.log(error);
+            });
+        });
+
+        $('#save').on('click', function (e) {
+            e.preventDefault();
+            var bill = {meta: {}};
+            bill.meta.username = user.email;
+            bill.meta.userDisplayName = user.displayName;
+            bill.meta.date = new Date().getTime();
+            bill = fillInData(bill);
+            saveToDb(bill);
+            showAutoCloseAlert();
+            $('#bill')[0].reset();
+        });
+
+        function fillInData(bill) {
+            var $form = $("#bill");
+            var data = getFormData($form);
+            bill.data = data;
+            return bill;
+        }
+
+        function getFormData($form){
+            var unindexed_array = $form.serializeArray();
+            var indexed_array = {};
+
+            $.map(unindexed_array, function(n, i){
+                indexed_array[n['name']] = n['value'];
+            });
+
+            return indexed_array;
+        }
+
+        function saveToDb(bill) {
+            var database = firebase.database();
+            var dbRef = firebase.database().ref('bills/');
+            var newPostRef = dbRef.push();
+            newPostRef.set(bill);
+        }
+
+        $('.checkbox').on('click', function(e){
+            if($(this).find(':checkbox').is(":checked")) {
+                $(this).next('.form-group').find('select').show();
+                $(this).next('.form-group').find('select').val(1);
+            } else {
+                $(this).next('.form-group').find('select').val(0);
+                $(this).next('.form-group').find('select').hide();
+            }
+        });
+
+        function humanize(input) {
+            var output = "Tổng đơn hàng của " + translate(input[0].value) + " " + input[1].value;
+            for(var i = 2; i < input.length; i++){
+                if(input[i].value && input[i].value != 0) {
+                    var key = (translate(input[i].name) === "" || translate(input[i].name) === "\n"?translate(input[i].name): (translate(input[i].name) + ":"));
+                    output += ( key + " " + translate(input[i].value));
+                }
+            };
+//        output += "\nXin cám ơn " + translate(input[0].value) + " " + input[1].value + " đã ủng hộ DalaFarm ạ."
+            return output;
+        }
+
+        function translate(keyword) {
+            if(keyword) {
+                switch (keyword){
+                    case "Male": return "anh";
+                    case "Female": return "chị";
+                    case "phone": return "\nĐiện thoại";
+                    case "phone2": return "\nĐiện thoại 2";
+                    case "address": return "\nĐịa chỉ";
+                    case "province": return "\nTỉnh thành";
+                    case "products": return "\n";
+                    case "carrot": return "";
+                    case "heartleaf": return "";
+                    case "pennywort": return "";
+                    case "matcha": return "";
+                    case "cocoa": return "";
+                    case "beetroot": return "";
+                    case "broccoli": return "";
+                    case "rainbow": return "";
+                    case "1": return ": 1 gói"
+                    case "2": return ": 2 gói"
+                    case "3": return ": 3 gói"
+                    case "4": return ": 4 gói"
+                    case "5": return ": 5 gói"
+                    case "6": return ": 6 gói"
+                    default: return keyword;
+                }
+
+
+            }
+        }
+    });
 </script>
 </body>
 </html>
