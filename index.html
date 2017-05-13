@@ -170,7 +170,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select style="display: none;" id="carrot" name="carrot" class="form-control">
+                                    <select style="display: none;" id="carrot" name="carrot" class="form-control product-select">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -189,7 +189,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select style="display: none;" id="heartleaf" name="heartleaf" class="form-control">
+                                    <select style="display: none;" id="heartleaf" name="heartleaf" class="form-control product-select">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -208,7 +208,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select style="display: none;" id="pennywort" name="pennywort" class="form-control">
+                                    <select style="display: none;" id="pennywort" name="pennywort" class="form-control product-select">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -227,7 +227,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select style="display: none;" id="matcha" name="matcha" class="form-control">
+                                    <select style="display: none;" id="matcha" name="matcha" class="form-control product-select">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -246,7 +246,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select style="display: none;" id="cocoa" name="cocoa" class="form-control">
+                                    <select style="display: none;" id="cocoa" name="cocoa" class="form-control product-select">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -265,7 +265,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select style="display: none;" id="beetroot" name="beetroot" class="form-control">
+                                    <select style="display: none;" id="beetroot" name="beetroot" class="form-control product-select">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -284,7 +284,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select style="display: none;" id="broccoli" name="broccoli" class="form-control">
+                                    <select style="display: none;" id="broccoli" name="broccoli" class="form-control product-select">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -303,7 +303,7 @@
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <select style="display: none;" id="rainbow" name="rainbow" class="form-control">
+                                    <select style="display: none;" id="rainbow" name="rainbow" class="form-control product-select">
                                         <option value="0">0</option><option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -357,18 +357,27 @@
             messagingSenderId: "723108104918"
         };
         firebase.initializeApp(config);
-        $('#bill').hide();
-//        showAutoCloseAlert();
-        $('.alert-success').hide();
+        function initUIState() {
+            $('#bill').hide();
+            $('.alert-success').hide();
+            $('.product-select').hide();
+        }
+
+        initUIState();
         function showAutoCloseAlert() {
             $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
                 $(".alert-success").slideUp(500);
             });
         }
 
+        function clearForm() {
+            $('#bill')[0].reset();
+            $('.product-select').hide();
+        }
+
         $('#cancel').on('click', function(e){
             e.preventDefault();
-            $('#bill')[0].reset();
+            clearForm();
         });
 
         $('#genMess').on('click', function (e) {
@@ -408,7 +417,7 @@
             bill = fillInData(bill);
             saveToDb(bill);
             showAutoCloseAlert();
-            $('#bill')[0].reset();
+            clearForm();
         });
 
         function fillInData(bill) {
